@@ -13,6 +13,15 @@
         android:theme="@style/Theme.Boogle"
         tools:targetApi="31">
         <activity
+            android:name=".view.home.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.home.HomeAnonymous"
+            android:exported="false" />
+        <activity
+            android:name=".NavBar"
+            android:exported="false" />
+        <activity
             android:name=".view.user.login.HomeLogin"
             android:exported="false" />
         <activity
