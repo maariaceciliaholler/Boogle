@@ -37,7 +37,11 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
+<<<<<<< Updated upstream
     "last_opened_file_path": "/Users/luiza/Downloads/Boogle"
+=======
+    "last_opened_file_path": "/home/maria/AndroidStudioProjects/Boogle/Boogle"
+>>>>>>> Stashed changes
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
