@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ddm.boogle.databinding.FragmentHomeBinding
 import com.ddm.boogle.viewmodel.home.HomeViewModel
+import com.google.android.material.button.MaterialButton
 
 class HomeFragment : Fragment() {
 
@@ -29,10 +31,19 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val searchButton: MaterialButton = binding.searchButton
+        searchButton.setOnClickListener {
+            val title = binding.titleInput.text.toString()
+            homeViewModel.searchBookByTitle(title)
         }
+
+        // Observing the search result
+        homeViewModel.searchResult.observe(viewLifecycleOwner, Observer { result ->
+            // Update UI with the result
+            val textView: TextView = binding.resultTextView
+            textView.text = result.toString()
+        })
+
         return root
     }
 
