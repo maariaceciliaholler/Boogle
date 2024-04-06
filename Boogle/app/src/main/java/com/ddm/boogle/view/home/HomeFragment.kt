@@ -1,4 +1,4 @@
-package com.ddm.boogle.ui.home
+package com.ddm.boogle.view.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ddm.boogle.databinding.FragmentHomeBinding
+import com.ddm.boogle.viewmodel.home.HomeViewModel
 
 class HomeFragment : Fragment() {
 

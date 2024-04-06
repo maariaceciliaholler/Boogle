@@ -1,4 +1,4 @@
-package com.ddm.boogle.ui.dashboard
+package com.ddm.boogle.viewmodel.category
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

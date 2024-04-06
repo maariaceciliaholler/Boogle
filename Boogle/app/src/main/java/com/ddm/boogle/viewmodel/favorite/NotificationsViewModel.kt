@@ -1,4 +1,4 @@
-package com.ddm.boogle.ui.notifications
+package com.ddm.boogle.viewmodel.favorite
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

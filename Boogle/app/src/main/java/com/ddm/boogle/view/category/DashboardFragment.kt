@@ -1,4 +1,4 @@
-package com.ddm.boogle.ui.dashboard
+package com.ddm.boogle.view.category
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ddm.boogle.databinding.FragmentDashboardBinding
+import com.ddm.boogle.viewmodel.category.DashboardViewModel
 
 class DashboardFragment : Fragment() {
 
