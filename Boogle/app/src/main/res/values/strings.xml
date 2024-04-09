@@ -3,4 +3,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="logo_app">Logo Boogle</string>
+    <string name="logar_anonimamente">Logar Anonimamente</string>
+    <string name="entrar">Entrar</string>
+    <string name="nao_conta">Não possui conta? Cadastre-se agora</string>
+    <string name="insira_email">Insira Seu E-mail</string>
+    <string name="insira_senha">Insira Sua Senha</string>
+    <string name="logar">Logar</string>
+    <string name="esqueceu_senha">Esqueceu sua senha? Clique aqui</string>
 </resources>
