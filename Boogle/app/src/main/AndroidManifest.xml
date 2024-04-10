@@ -16,19 +16,16 @@
             android:name=".view.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".view.home.HomeAnonymous"
+            android:name=".view.home.HomeAnonymousActivity"
             android:exported="false" />
         <activity
             android:name=".NavBar"
             android:exported="false" />
         <activity
-            android:name=".view.user.login.HomeLogin"
+            android:name=".view.user.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".view.user.register.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.user.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

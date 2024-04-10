@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ddm.boogle.databinding.ActivityMainBinding
-import com.ddm.boogle.view.home.HomeAnonymous
+import com.ddm.boogle.view.home.HomeAnonymousActivity
 import com.ddm.boogle.view.user.login.LoginActivity
 import com.ddm.boogle.view.user.register.RegisterActivity
 import com.google.firebase.Firebase
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         anonymousLoginButton.setOnClickListener {
-            val intent = Intent(this, HomeAnonymous::class.java)
+            val intent = Intent(this, HomeAnonymousActivity::class.java)
             startActivity(intent)
         }
 

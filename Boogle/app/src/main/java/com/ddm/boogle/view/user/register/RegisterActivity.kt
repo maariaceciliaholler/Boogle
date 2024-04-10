@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.ddm.boogle.MainActivity
 import com.ddm.boogle.R
+import com.ddm.boogle.view.home.HomeActivity
 import com.ddm.boogle.view.home.HomeFragment
 
 class RegisterActivity : AppCompatActivity() {
@@ -19,12 +21,6 @@ class RegisterActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-        }
-
-        // Configurando o OnClickListener para o botão de Logar
-        findViewById<AppCompatButton>(R.id.button).setOnClickListener {
-            val intent = Intent(this, HomeFragment::class.java)
-            startActivity(intent)
         }
     }
 }
