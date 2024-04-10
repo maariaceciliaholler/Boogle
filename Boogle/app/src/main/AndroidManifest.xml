@@ -13,19 +13,22 @@
         android:theme="@style/Theme.Boogle"
         tools:targetApi="31">
         <activity
+            android:name=".NavBarAnonymous"
+            android:exported="false" />
+        <activity
+            android:name=".view.user.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NavBar"
+            android:exported="false" />
+        <activity
             android:name=".view.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".view.home.HomeAnonymousActivity"
             android:exported="false" />
         <activity
-            android:name=".NavBar"
-            android:exported="false" />
-        <activity
             android:name=".view.user.login.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.user.register.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
