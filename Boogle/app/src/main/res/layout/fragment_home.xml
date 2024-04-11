@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
+        android:text=""
         android:textAlignment="center"
         android:textSize="20sp"
-        android:text="Boogle"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,13 +30,13 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/text_home">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/title_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite o título do livro" />
+            android:hint="Digite uma palavra-chave" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,15 +49,27 @@
         app:layout_constraintEnd_toEndOf="@id/title_input_layout"
         app:layout_constraintTop_toBottomOf="@id/title_input_layout" />
 
-    <TextView
-        android:id="@+id/resultTextView"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Result"
-        android:textSize="18sp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/homenotfound"
+        android:visibility="visible"
+        android:contentDescription="Comece a pesquisar..."
+        app:layout_constraintTop_toBottomOf="@id/search_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/resultLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/search_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

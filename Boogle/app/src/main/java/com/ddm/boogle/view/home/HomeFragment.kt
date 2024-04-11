@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.ddm.boogle.R
 import com.ddm.boogle.databinding.FragmentHomeBinding
 import com.ddm.boogle.viewmodel.home.HomeViewModel
 import com.google.android.material.button.MaterialButton
@@ -37,11 +38,21 @@ class HomeFragment : Fragment() {
             homeViewModel.searchBookByTitle(title)
         }
 
-        // Observing the search result
+
         homeViewModel.searchResult.observe(viewLifecycleOwner, Observer { result ->
-            // Update UI with the result
-            val textView: TextView = binding.resultTextView
-            textView.text = result.toString()
+            binding.resultLayout.removeAllViews()
+
+            if (result.isNullOrEmpty()) {
+                binding.animationView.visibility = View.VISIBLE
+            } else {
+                binding.animationView.visibility = View.GONE
+                result.forEach { bookItem ->
+                    val bookView = inflater.inflate(R.layout.book_item_layout, null)
+                    val titleTextView: TextView = bookView.findViewById(R.id.titleTextView)
+                    titleTextView.text = bookItem.volumeInfo.title
+                    binding.resultLayout.addView(bookView)
+                }
+            }
         })
 
         return root
