@@ -31,7 +31,7 @@
             style="@style/LoginTextInputInnerFieldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/insira_nome"
+            android:hint="@string/insert_name"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,7 +50,7 @@
             style="@style/LoginTextInputInnerFieldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/insira_email"
+            android:hint="@string/insert_email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,7 @@
             style="@style/LoginTextInputInnerFieldStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/insira_senha"
+            android:hint="@string/insert_password"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +81,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="10dp"
         android:background="@color/blue"
-        android:text="@string/logar"
+        android:text="@string/enter"
         android:textColor="@color/black"
         android:textStyle="bold" />
 

@@ -4,12 +4,15 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="logo_app">Logo Boogle</string>
-    <string name="logar_anonimamente">Logar Anonimamente</string>
-    <string name="entrar">Entrar</string>
-    <string name="nao_conta">Não possui conta? Cadastre-se agora</string>
-    <string name="insira_email">Insira Seu E-mail</string>
-    <string name="insira_senha">Insira Sua Senha</string>
-    <string name="logar">Logar</string>
-    <string name="esqueceu_senha">Esqueceu sua senha? Clique aqui</string>
-    <string name="insira_nome">Insira Seu Nome</string>
+    <string name="log_in_anonymously">Logar Anonimamente</string>
+    <string name="enter">Entrar</string>
+    <string name="no_account">Não possui conta? Cadastre-se agora</string>
+    <string name="insert_email">Insira Seu E-mail</string>
+    <string name="insert_password">Insira Sua Senha</string>
+    <string name="sign_in">Logar</string>
+    <string name="forgot_password">Esqueceu sua senha? Clique aqui</string>
+    <string name="insert_name">Insira Seu Nome</string>
+    <string name="confirm_passwor">Confirmar Senha</string>
+    <string name="save">Salvar</string>
+    <string name="reset_password">Redefinir Senha</string>
 </resources>

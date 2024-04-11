@@ -22,7 +22,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="125dp"
         android:background="@color/blue"
-        android:text="@string/entrar"
+        android:text="@string/enter"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -33,7 +33,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:background="@color/gray"
-        android:text="@string/logar_anonimamente"
+        android:text="@string/log_in_anonymously"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="@string/nao_conta"
+        android:text="@string/no_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
