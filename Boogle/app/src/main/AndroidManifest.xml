@@ -28,9 +28,6 @@
             android:name=".view.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".view.home.HomeAnonymousActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.user.login.LoginActivity"
             android:exported="false" />
         <activity
@@ -43,6 +40,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".model.notification.FirabaseMessaging"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

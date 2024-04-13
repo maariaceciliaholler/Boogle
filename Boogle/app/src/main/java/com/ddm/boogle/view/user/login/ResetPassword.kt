@@ -5,6 +5,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.ddm.boogle.databinding.ActivityResetPasswordBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.messaging.RemoteMessage
 
 class ResetPassword : AppCompatActivity() {
     private lateinit var binding: ActivityResetPasswordBinding
@@ -31,7 +33,22 @@ class ResetPassword : AppCompatActivity() {
                                 "Um e-mail de redefinição de senha foi enviado para $email",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            finish()
+
+                            FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    val token = task.result
+                                    val message = RemoteMessage.Builder("658480956706@fcm.googleapis.com")
+                                        .setMessageId(Integer.toString(0))
+                                        .addData("title", "Redefinição de senha")
+                                        .addData("message", "Um e-mail de redefinição de senha foi enviado para $email")
+                                        .addData("email", email)
+                                        .build()
+
+                                    FirebaseMessaging.getInstance().send(message)
+                                } else {
+                                    // Handle error
+                                }
+                            }
                         } else {
                             Toast.makeText(
                                 this,
