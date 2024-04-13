@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:text=""
         android:textAlignment="center"
@@ -36,7 +36,7 @@
             android:id="@+id/title_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Digite uma palavra-chave" />
+            android:hint="@string/key_word" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Pesquisar"
+        android:text="@string/search_field"
+        android:background="@color/blue"
         app:layout_constraintEnd_toEndOf="@id/title_input_layout"
         app:layout_constraintTop_toBottomOf="@id/title_input_layout" />
 
@@ -53,23 +54,23 @@
         android:id="@+id/animationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="Comece a pesquisar..."
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_button"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/homenotfound"
-        android:visibility="visible"
-        android:contentDescription="Comece a pesquisar..."
-        app:layout_constraintTop_toBottomOf="@id/search_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:lottie_rawRes="@raw/homenotfound" />
 
     <LinearLayout
         android:id="@+id/resultLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/search_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/search_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

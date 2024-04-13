@@ -15,4 +15,9 @@
     <string name="confirm_passwor">Confirmar Senha</string>
     <string name="save">Salvar</string>
     <string name="reset_password">Redefinir Senha</string>
+    <string name="key_word">Digite uma palavra-chave</string>
+    <string name="search_field">Pesquisar</string>
+    <string name="set_favorite">Favoritar</string>
+    <string name="close_modal">Fechar</string>
+    <string name="book_image">Book image</string>
 </resources>

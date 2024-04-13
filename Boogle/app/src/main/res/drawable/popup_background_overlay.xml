@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Região superior à popup -->
+    <View
+        android:id="@+id/topOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true" />
+
+    <!-- Região esquerda à popup -->
+    <View
+        android:id="@+id/leftOverlay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/rightOverlay" />
+
+    <!-- Região direita à popup -->
+    <View
+        android:id="@+id/rightOverlay"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true" />
+
+    <!-- Região inferior à popup -->
+    <View
+        android:id="@+id/bottomOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/topOverlay" />
+
+    <!-- Região do popup -->
+    <FrameLayout
+        android:id="@+id/popupContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <!-- Adicione aqui o conteúdo do seu popup -->
+
+    </FrameLayout>
+
+    <!-- Aqui fica a imagem borrada -->
+    <ImageView
+        android:id="@+id/blurredBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:visibility="invisible" />
+
+</RelativeLayout>

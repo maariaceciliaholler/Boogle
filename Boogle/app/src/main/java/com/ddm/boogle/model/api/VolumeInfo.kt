@@ -5,5 +5,6 @@ data class VolumeInfo(
     val authors: List<String>,
     val description: String?,
     val publishedDate: String?,
-    val infoLink: String
+    val infoLink: String,
+    val imageLinks: ImageLink?
 )
