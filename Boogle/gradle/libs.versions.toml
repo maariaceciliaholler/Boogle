@@ -17,6 +17,8 @@ firebaseDatabase = "20.3.1"
 activity = "1.8.0"
 firebaseAuth = "22.3.1"
 firebaseMessagingKtx = "23.4.1"
+firebaseMessaging = "23.4.1"
+firebaseAnalytics = "21.6.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,6 +37,8 @@ firebase-database = { group = "com.google.firebase", name = "firebase-database",
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-messaging-ktx = { group = "com.google.firebase", name = "firebase-messaging-ktx", version.ref = "firebaseMessagingKtx" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

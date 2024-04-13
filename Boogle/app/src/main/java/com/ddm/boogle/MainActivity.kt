@@ -7,6 +7,7 @@ import com.ddm.boogle.databinding.ActivityMainBinding
 import com.ddm.boogle.view.user.login.LoginActivity
 import com.ddm.boogle.view.user.register.RegisterActivity
 import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
 import com.google.firebase.database.database
 
 class MainActivity : AppCompatActivity() {
@@ -39,10 +40,11 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // Write a message to the database
+        FirebaseApp.initializeApp(this)
         val database = Firebase.database
         val myRef = database.getReference("message")
 
         myRef.setValue("Hello, World 2.1!")
     }
+
 }
