@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.SEND" />
     <permission
         android:name="com.ddm.boogle.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -12,6 +13,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="com.google.firebase.messaging.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.firebase.messaging.permission.SEND"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -34,7 +36,7 @@
             android:value="@string/default_notification_channel_id"/>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/blue" />
+            android:resource="@color/black" />
         <activity
             android:name=".view.user.login.ResetPassword"
             android:exported="false" />

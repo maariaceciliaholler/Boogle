@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.PopupWindow
 import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ import com.ddm.boogle.databinding.FragmentHomeBinding
 import com.ddm.boogle.model.api.BookItem
 import com.ddm.boogle.viewmodel.home.HomeViewModel
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.database.FirebaseDatabase
 
 class HomeFragment : Fragment() {
 
@@ -105,6 +107,7 @@ class HomeFragment : Fragment() {
         val popupTitleTextView: TextView = popupView.findViewById(R.id.popupTitleTextView)
         val popupDescriptionTextView: TextView = popupView.findViewById(R.id.popupDescriptionTextView)
         val closeButton: Button = popupView.findViewById(R.id.closeButton)
+        val favoriteButton: Button = popupView.findViewById(R.id.favoriteButton)
 
         popupTitleTextView.text = bookItem.volumeInfo.title
         popupDescriptionTextView.text = bookItem.volumeInfo.description
@@ -124,6 +127,23 @@ class HomeFragment : Fragment() {
         popupWindow.showAtLocation(binding.root, Gravity.CENTER, 0, 0)
 
         closeButton.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        favoriteButton.setOnClickListener {
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference("favorite_books")
+
+            val key = myRef.push().key
+            key?.let { key ->
+                myRef.child(key).setValue(bookItem)
+                    .addOnSuccessListener {
+                        Toast.makeText(requireContext(), "@string/favorite_book_firebase_message_success", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(requireContext(), "@string/favorite_book_firebase_message_error : ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            }
             popupWindow.dismiss()
         }
     }

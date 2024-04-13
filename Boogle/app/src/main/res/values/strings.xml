@@ -21,4 +21,6 @@
     <string name="close_modal">Fechar</string>
     <string name="book_image">Book image</string>
     <string name="default_notification_channel_id">com.boogle.ddm\n</string>
+    <string name="favorite_book_firebase_message_success">"Livro adicionado aos favoritos!"</string>
+    <string name="favorite_book_firebase_message_error">"Erro ao adicionar o livro aos favoritos!"</string>
 </resources>
