@@ -14,12 +14,19 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.ddm.boogle.view.category.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_categories"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.ddm.boogle.view.favorite.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_favorite"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.ddm.boogle.view.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>
