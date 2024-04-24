@@ -27,7 +27,11 @@
     <string name="title_profile">Perfil</string>
     <string name="logoff">Sair do App</string>
     <string name="alter_password">Alterar Senha</string>
+<<<<<<< Updated upstream
     <string name="name_user">Nome</string>
     <string name="email_user">E-mail</string>
     <string name="delete_account">Deletar Conta</string>
+=======
+    <string name="remove_favorite">Remover Favorito\n</string>
+>>>>>>> Stashed changes
 </resources>

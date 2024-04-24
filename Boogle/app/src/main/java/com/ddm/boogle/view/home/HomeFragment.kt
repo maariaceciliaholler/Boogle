@@ -25,6 +25,7 @@ import com.ddm.boogle.databinding.FragmentHomeBinding
 import com.ddm.boogle.model.api.BookItem
 import com.ddm.boogle.viewmodel.home.HomeViewModel
 import com.google.android.material.button.MaterialButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class HomeFragment : Fragment() {
@@ -51,6 +52,10 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+        val userId = currentUser?.uid
+
         val searchButton: MaterialButton = binding.searchButton
         searchButton.setOnClickListener {
             val title = binding.titleInput.text.toString()
@@ -65,7 +70,7 @@ class HomeFragment : Fragment() {
                     val titleTextView: TextView = bookView.findViewById(R.id.titleTextView)
                     titleTextView.text = bookItem.volumeInfo.title
                     titleTextView.setOnClickListener {
-                        showBookDescriptionPopup(bookItem)
+                        showBookDescriptionPopup(bookItem, userId.toString())
                     }
                     binding.resultLayout.addView(bookView)
                 }
@@ -95,7 +100,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun showBookDescriptionPopup(bookItem: BookItem) {
+    private fun showBookDescriptionPopup(bookItem: BookItem, userId: String) {
         val inflater = requireContext().getSystemService(LayoutInflater::class.java)
         val popupView = inflater.inflate(R.layout.book_description_popup, null)
 
@@ -128,15 +133,21 @@ class HomeFragment : Fragment() {
         favoriteButton.setOnClickListener {
             val database = FirebaseDatabase.getInstance()
             val myRef = database.getReference("favorite_books")
+            val userInfo = mapOf("uid" to userId)
 
             val key = myRef.push().key
             key?.let { key ->
-                myRef.child(key).setValue(bookItem)
+                val dataToSave = mapOf(
+                    "bookInfo" to bookItem,
+                    "userInfo" to userInfo
+                )
+
+                myRef.child(key).setValue(dataToSave)
                     .addOnSuccessListener {
-                        Toast.makeText(requireContext(), "@string/favorite_book_firebase_message_success", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Livro adicionado aos favoritos!", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "@string/favorite_book_firebase_message_error : ${e.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Erro ao adicionar o livro aos favoritos! : ${e.message}", Toast.LENGTH_SHORT).show()
                     }
             }
             popupWindow.dismiss()

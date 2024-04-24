@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.ddm.boogle.view.favorite.NotificationsFragment"
+        android:name="com.ddm.boogle.view.favorite.FavoriteFragment"
         android:label="@string/title_favorite"
         tools:layout="@layout/fragment_notifications" />
 
