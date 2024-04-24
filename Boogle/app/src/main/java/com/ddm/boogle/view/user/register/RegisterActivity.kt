@@ -44,20 +44,12 @@ class RegisterActivity : AppCompatActivity() {
 
                                 user.updateProfile(profileUpdates)
                                     .addOnCompleteListener { profileUpdateTask ->
-                                        if (profileUpdateTask.isSuccessful) {
-                                            // Nome do usuário atualizado com sucesso
-                                        } else {
-                                            // Falha ao atualizar o nome do usuário
-                                        }
                                     }
                             }
-
-                            // Navegação para a próxima tela após o cadastro bem-sucedido
                             val intent = Intent(this, NavBar::class.java)
                             startActivity(intent)
                         } else {
-                            // Exibe mensagem de erro em caso de falha no cadastro
-                            Toast.makeText(this, task.exception.toString(), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Erro ao criar conta: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
             } else {

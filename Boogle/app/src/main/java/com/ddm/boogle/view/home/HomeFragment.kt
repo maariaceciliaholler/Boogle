@@ -60,10 +60,6 @@ class HomeFragment : Fragment() {
         homeViewModel.searchResult.observe(viewLifecycleOwner, Observer { result ->
             binding.resultLayout.removeAllViews()
 
-            if (result.isNullOrEmpty()) {
-                binding.animationView.visibility = View.VISIBLE
-            } else {
-                binding.animationView.visibility = View.GONE
                 result.forEach { bookItem ->
                     val bookView = inflater.inflate(R.layout.book_item_layout, null)
                     val titleTextView: TextView = bookView.findViewById(R.id.titleTextView)
@@ -73,7 +69,6 @@ class HomeFragment : Fragment() {
                     }
                     binding.resultLayout.addView(bookView)
                 }
-            }
         })
 
         askNotificationPermission()

@@ -27,4 +27,7 @@
     <string name="title_profile">Perfil</string>
     <string name="logoff">Sair do App</string>
     <string name="alter_password">Alterar Senha</string>
+    <string name="name_user">Nome</string>
+    <string name="email_user">E-mail</string>
+    <string name="delete_account">Deletar Conta</string>
 </resources>

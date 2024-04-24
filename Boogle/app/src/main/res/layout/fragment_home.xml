@@ -6,12 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".view.home.HomeFragment">
 
+    <LinearLayout
+        android:id="@+id/logoLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="0dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:contentDescription="@string/logo_app"
+            android:src="@mipmap/ic_boogle_name_foreground" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="-100dp"
         android:layout_marginEnd="8dp"
         android:text=""
         android:textAlignment="center"
@@ -19,50 +39,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logoLayout" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/title_input_layout"
+    <LinearLayout
+        android:id="@+id/searchLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:orientation="horizontal"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_home">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/title_input"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/title_input_layout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/key_word" />
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            style="@style/LoginTextInputOuterFieldStyle"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="24dp"
+            app:boxCornerRadiusBottomStart="24dp"
+            app:boxCornerRadiusTopEnd="24dp"
+            app:boxCornerRadiusTopStart="24dp"
+            app:boxStrokeColor="@color/blue"
+            app:boxStrokeWidth="2dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/title_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/key_word"
+                android:inputType="text"
+                android:maxLines="1"
+                android:drawablePadding="8dp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/search_field"
-        android:background="@color/blue"
-        app:layout_constraintEnd_toEndOf="@id/title_input_layout"
-        app:layout_constraintTop_toBottomOf="@id/title_input_layout" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Comece a pesquisar..."
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_button"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/homenotfound" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            style="@style/SearchTextInputOuterFieldStyle"
+            android:drawableEnd="@drawable/baseline_search_24"
+            android:background="@color/white"/>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/resultLayout"
@@ -71,6 +95,6 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_button" />
+        app:layout_constraintTop_toBottomOf="@id/searchLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
