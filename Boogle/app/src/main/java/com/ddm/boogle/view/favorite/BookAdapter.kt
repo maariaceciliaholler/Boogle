@@ -17,6 +17,15 @@ class BookAdapter(context: Context, books: List<VolumeInfo>) :
     ArrayAdapter<VolumeInfo>(context, 0, books) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val animationView = (parent as? ListView)?.rootView?.findViewById<LottieAnimationView>(R.id.animationView)
+        if (animationView != null) {
+            if (count == 0) {
+                animationView.visibility = View.VISIBLE
+            } else {
+                animationView.visibility = View.GONE
+            }
+        }
+
         var listItemView = convertView
         if (listItemView == null) {
             listItemView = LayoutInflater.from(context).inflate(R.layout.list_item_book, parent, false)
@@ -36,15 +45,6 @@ class BookAdapter(context: Context, books: List<VolumeInfo>) :
                 Glide.with(context)
                     .load(thumbnailUrl)
                     .into(imageView)
-            }
-        }
-
-        val animationView = (parent as? ListView)?.rootView?.findViewById<LottieAnimationView>(R.id.animationView)
-        if (animationView != null) {
-            if (count == 0) {
-                animationView.visibility = View.VISIBLE
-            } else {
-                animationView.visibility = View.GONE
             }
         }
 

@@ -48,36 +48,42 @@ class FavoriteFragment : Fragment() {
         listView.adapter = bookAdapter
 
         val currentUser = firebaseAuth.currentUser
-        val userId = currentUser?.uid
-        if (userId != null) {
+        val userId = currentUser?.uid.toString()
+
+        if (userId.isNotEmpty()) {
             databaseReference = FirebaseDatabase.getInstance().getReference("favorite_books")
             favoriteBooksListener = object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     volumeInfoList.clear()
                     for (data in snapshot.children) {
                         val bookInfo = data.child("bookInfo").getValue(object : GenericTypeIndicator<Map<String, Any>>() {})
-                        val volumeInfoMap = bookInfo?.get("volumeInfo") as? Map<String, Any>
-                        if (volumeInfoMap != null) {
-                            val authorsList = volumeInfoMap["authors"] as? List<String> ?: emptyList()
-                            val imageLinksMap = volumeInfoMap["imageLinks"] as? Map<String, String>
-                            val imageLinks = if (imageLinksMap != null) {
-                                ImageLink(
-                                    smallThumbnail = imageLinksMap["smallThumbnail"] ?: "",
-                                    thumbnail = imageLinksMap["thumbnail"] ?: ""
-                                )
-                            } else {
-                                null
-                            }
+                        val userInfo = data.child("userInfo").getValue(object : GenericTypeIndicator<Map<String, Any>>() {})
+                        val uid = userInfo?.get("uid")
 
-                            val volumeInfo = VolumeInfo(
-                                title = volumeInfoMap["title"] as? String ?: "",
-                                authors = authorsList,
-                                description = volumeInfoMap["description"] as? String,
-                                publishedDate = volumeInfoMap["publishedDate"] as? String,
-                                infoLink = volumeInfoMap["infoLink"] as? String ?: "",
-                                imageLinks = imageLinks
-                            )
-                            volumeInfoList.add(volumeInfo)
+                        if(userId == uid.toString()){
+                            val volumeInfoMap = bookInfo?.get("volumeInfo") as? Map<String, Any>
+                            if (volumeInfoMap != null) {
+                                val authorsList = volumeInfoMap["authors"] as? List<String> ?: emptyList()
+                                val imageLinksMap = volumeInfoMap["imageLinks"] as? Map<String, String>
+                                val imageLinks = if (imageLinksMap != null) {
+                                    ImageLink(
+                                        smallThumbnail = imageLinksMap["smallThumbnail"] ?: "",
+                                        thumbnail = imageLinksMap["thumbnail"] ?: ""
+                                    )
+                                } else {
+                                    null
+                                }
+
+                                val volumeInfo = VolumeInfo(
+                                    title = volumeInfoMap["title"] as? String ?: "",
+                                    authors = authorsList,
+                                    description = volumeInfoMap["description"] as? String,
+                                    publishedDate = volumeInfoMap["publishedDate"] as? String,
+                                    infoLink = volumeInfoMap["infoLink"] as? String ?: "",
+                                    imageLinks = imageLinks
+                                )
+                                volumeInfoList.add(volumeInfo)
+                            }
                         }
                     }
                     bookAdapter.notifyDataSetChanged()
