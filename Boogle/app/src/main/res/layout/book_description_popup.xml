@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="0dp"
                     android:background="@color/blue"
+                    android:visibility="gone"
                     android:text="@string/set_favorite"
                     android:textColor="@color/white"
                     android:textStyle="bold" />

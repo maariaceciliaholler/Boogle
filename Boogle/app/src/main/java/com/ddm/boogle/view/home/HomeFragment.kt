@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
@@ -31,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    private lateinit var firebaseAuth: FirebaseAuth
     private val binding get() = _binding!!
 
     private val requestPermissionLauncher = registerForActivityResult(
@@ -75,9 +77,6 @@ class HomeFragment : Fragment() {
                     binding.resultLayout.addView(bookView)
                 }
         })
-
-        askNotificationPermission()
-
         return root
     }
 
@@ -108,14 +107,12 @@ class HomeFragment : Fragment() {
         val popupDescriptionTextView: TextView = popupView.findViewById(R.id.popupDescriptionTextView)
         val closeButton: Button = popupView.findViewById(R.id.closeButton)
         val favoriteButton: Button = popupView.findViewById(R.id.favoriteButton)
-
+        val scrollView = ScrollView(requireContext())
+        val coverImageView: ImageView = popupView.findViewById(R.id.coverImageView)
+        favoriteButton.visibility = GONE;
         popupTitleTextView.text = bookItem.volumeInfo.title
         popupDescriptionTextView.text = bookItem.volumeInfo.description
-
-        val scrollView = ScrollView(requireContext())
         scrollView.addView(popupView)
-
-        val coverImageView: ImageView = popupView.findViewById(R.id.coverImageView)
 
         bookItem.volumeInfo.imageLinks?.thumbnail?.let { thumbnailUrl ->
             Glide.with(this)
@@ -130,27 +127,34 @@ class HomeFragment : Fragment() {
             popupWindow.dismiss()
         }
 
-        favoriteButton.setOnClickListener {
-            val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("favorite_books")
-            val userInfo = mapOf("uid" to userId)
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser != null) {
+            if(!currentUser.isAnonymous){
+                favoriteButton.visibility = View.VISIBLE
+                favoriteButton.setOnClickListener {
+                    val database = FirebaseDatabase.getInstance()
+                    val myRef = database.getReference("favorite_books")
+                    val userInfo = mapOf("uid" to userId)
 
-            val key = myRef.push().key
-            key?.let { key ->
-                val dataToSave = mapOf(
-                    "bookInfo" to bookItem,
-                    "userInfo" to userInfo
-                )
+                    val key = bookItem.volumeInfo.title.hashCode().toString()
+                    key?.let { key ->
+                        val dataToSave = mapOf(
+                            "bookInfo" to bookItem,
+                            "userInfo" to userInfo
+                        )
 
-                myRef.child(key).setValue(dataToSave)
-                    .addOnSuccessListener {
-                        Toast.makeText(requireContext(), "Livro adicionado aos favoritos!", Toast.LENGTH_SHORT).show()
+                        myRef.child(key).setValue(dataToSave)
+                            .addOnSuccessListener {
+                                Toast.makeText(requireContext(), "Livro adicionado aos favoritos!", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(requireContext(), "Erro ao adicionar o livro aos favoritos! : ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
                     }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Erro ao adicionar o livro aos favoritos! : ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
+                    popupWindow.dismiss()
+                }
             }
-            popupWindow.dismiss()
         }
     }
 

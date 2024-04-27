@@ -32,7 +32,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/kid_star_24"
             android:contentDescription="@string/remove_favorite"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true" />
 
         <ImageView
             android:id="@+id/coverImageView"

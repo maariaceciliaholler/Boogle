@@ -1,5 +1,7 @@
-package com.ddm.boogle.viewmodel.home
+package com.ddm.boogle.viewmodel.category
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,12 +14,10 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class HomeViewModel : ViewModel() {
-
+class AdventureCategoryViewModel : ViewModel() {
     private val _searchResult = MutableLiveData<List<BookItem>>()
     val searchResult: LiveData<List<BookItem>> = _searchResult
-
-    fun searchBookByTitle(title: String) {
+    fun searchBooksByAdventureCategory() {
         viewModelScope.launch {
             val books = withContext(Dispatchers.IO) {
                 val retrofit = Retrofit.Builder()
@@ -26,10 +26,10 @@ class HomeViewModel : ViewModel() {
                     .build()
 
                 val service = retrofit.create(BookApiService::class.java)
-                service.searchBooks(title)
+                service.searchBooks("categoria:aventura")
             }
             _searchResult.postValue(books.items)
+            Log.d(TAG, books.toString())
         }
     }
-
 }

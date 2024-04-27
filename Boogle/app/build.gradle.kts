@@ -55,7 +55,6 @@ dependencies {
     implementation(libs.firebase.messaging.ktx)
     implementation(libs.firebase.messaging)
     implementation(libs.firebase.analytics)
-    implementation(libs.androidx.fragment.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,4 +64,5 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.13.0")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.13.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
 }
